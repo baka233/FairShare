@@ -1,0 +1,77 @@
+#include "taskinfopanel.h"
+
+TaskInfoPanel::TaskInfoPanel(QWidget *parent) : QTextBrowser(parent)
+{
+    this->setHtml(QString("<div style=\"text-align:center;\"><p>下载信息</p></div>")
+        + "<tbody cellspacing=400 width=100%>"
+        + "<tr>"
+        + "<td width=\"33%\">剩余时间 : </td>"
+        + "<td width=\"33%\">已下载: </td>"
+        + "<td width=\"33%\">已上传: </td>"
+        + "</tr>"
+        + "<tr>"
+        + "<td width=\"33%\">下载速度 : </td>"
+        + "<td width=\"33%\">上传速度: </td>"
+        + "<td width=\"33%\">做种数: </td>"
+        + "</tr>"
+        + "</table>"
+        + "<div style=\"text-align:center;\"><p>文件信息</p></div>"
+        + "<tbody cellspacing=400 width=100%>"
+        + "<tr>"
+        + "<td width=\"33%\">文件大小 : </td>"
+        + "<td width=\"33%\">区块: </td>"
+        + "<td width=\"33%\">创建于: </td>"
+        + "</tr>"
+        + "<tr>"
+        + "<td width=\"33%\">添加于 : </td>"
+        + "<td width=\"33%\">完成于 : </td>"
+        + "<td width=\"33%\">Hash值: </td>"
+        + "</tr>"
+        + "<tr>"
+        + "<td width=\"100%\">保存路径: </td>"
+        + "</tr>"
+        + "<tr>"
+        + "<td width=\"100%\">注释: </td>"
+        + "</tr>"
+
+        + "</table>"
+    );
+}
+
+void TaskInfoPanel::show_item_info(std::shared_ptr<Task> task)
+{
+     this->setHtml(QString("<div style=\"text-align:center;\"><p>下载信息</p></div>")
+        + "<tbody cellspacing=400 width=100%>"
+        + "<tr>"
+        + "<td width=\"33%\">剩余时间: " + task->get_remain_time() + "</td>"
+        + "<td width=\"33%\">已下载: " + task->get_downloaded_file_size() + "</td>"
+        + "<td width=\"33%\">已上传: " + task->get_uploaded_file_size() + "</td>"
+        + "</tr>"
+        + "<tr>"
+        + "<td width=\"33%\">下载速度: " + task->get_download_speed() + "</td>"
+        + "<td width=\"33%\">上传速度:  " + task->get_upload_speed() + "</td>"
+        + "<td width=\"33%\">做种数: " +  QString::number(task->get_seeders_number()) + "</td>"
+        + "</tr>"
+        + "</table>"
+        + "<div style=\"text-align:center;\"><p>文件信息</p></div>"
+        + "<tbody cellspacing=400 width=100%>"
+        + "<tr>"
+        + "<td width=\"33%\">文件大小: " + task->get_size_beautify() + "</td>"
+        + "<td width=\"33%\">区块: " + QString::number(task->get_block_number()) + " x 4MiB(已完成:" + QString::number(task->get_downloaded_size()) + ")</td>"
+        + "<td width=\"33%\">创建于: </td>"
+        + "</tr>"
+        + "<tr>"
+        + "<td width=\"33%\">添加于 : " + task->get_add_time() + "</td>"
+        + "<td width=\"33%\">完成于 : " + task->get_finish_time() + "</td>"
+        + "<td width=\"33%\">Hash值: " + task->get_md5() + "</td>"
+        + "</tr>"
+        + "<tr>"
+        + "<td width=\"100%\">保存路径: " + task->get_file_path() + "</td>"
+        + "</tr>"
+        + "<tr>"
+        + "<td width=\"100%\">注释: " + task->get_comment() + "</td>"
+        + "</tr>"
+
+        + "</table>"
+    );
+}

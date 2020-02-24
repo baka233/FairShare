@@ -1,0 +1,12 @@
+<RCC>
+    <qresource>
+        <file>icons/upload.png</file>
+        <file>icons/stop.png</file>
+        <file>icons/start.png</file>
+        <file>icons/pause.png</file>
+        <file>icons/download.png</file>
+        <file>icons/delete.png</file>
+        <file>icons/downloaded_block.svg</file>
+        <file>icons/undownloaded_block.svg</file>
+    </qresource>
+</RCC>
